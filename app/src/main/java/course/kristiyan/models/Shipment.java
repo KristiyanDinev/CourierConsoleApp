@@ -9,15 +9,14 @@ public class Shipment {
     public Receiver receiver;
     public String description;
 
-    public Shipment(String senderName, String senderAddress,
-                    String receiverName, String receiverAddress,
+    public Shipment(Sender sender, Receiver receiver,
                     String description) {
         // auto generate truckId
         App.truckIdSeq++;
         truckId = App.truckIdSeq;
         this.description = description;
-        sender = new Sender(senderName, senderAddress);
-        receiver = new Receiver(receiverName, receiverAddress);
+        this.sender = sender;
+        this.receiver = receiver;
     }
 
     @Override

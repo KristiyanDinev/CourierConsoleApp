@@ -5,9 +5,14 @@ import course.kristiyan.App;
 import java.util.Scanner;
 
 public class Menu {
+    private Scanner scanner;
+
+    public Menu() {
+        scanner = new Scanner(System.in);
+    }
 
     public void printMenu() {
-        App.logger.info("""
+        System.out.println("""
                 ===Courier Console App===
                 1. Create Shipment
                 2. Track Shipment
@@ -16,26 +21,22 @@ public class Menu {
                 """);
     }
 
-    public int getOption() {
-        Scanner scanner = new Scanner(System.in);
+    public int getInt(String msg) {
         Integer option = null;
         while (option == null) {
             try {
-                App.logger.info("Enter your option: ");
-                option = scanner.nextInt();
+                System.out.print(msg);
+                option = Integer.parseInt(scanner.nextLine());
+
             } catch (Exception e) {
-                App.logger.warning(e.getMessage());
+                System.out.println("Error: "+e.getMessage());
             }
         }
-        scanner.close();
         return option;
     }
 
     public String getText(String msg) {
-        Scanner scanner = new Scanner(System.in);
-        App.logger.info(msg);
-        String text = scanner.nextLine();
-        scanner.close();
-        return text;
+        System.out.print(msg);
+        return scanner.nextLine();
     }
 }

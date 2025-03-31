@@ -5,17 +5,41 @@ package course.kristiyan;
 
 
 import course.kristiyan.models.Shipment;
+import course.kristiyan.services.ShipmentService;
+import course.kristiyan.utils.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class App {
     public static int truckIdSeq = 0;
-    public static Logger logger = Logger.getGlobal();
     public static List<Shipment> shipments;
 
     public static void main(String[] args) {
         shipments = new ArrayList<>();
+        Menu menu = new Menu();
+        ShipmentService shipmentService = new ShipmentService(menu);
+
+        while (true) {
+            menu.printMenu();
+            int option = menu.getInt("Enter your option: ");
+            switch (option) {
+                case 1: {
+                    shipmentService.createShipment();
+                    break;
+                }
+                case 2: {
+                    shipmentService.trackShipment();
+                    break;
+                }
+                case 3: {
+                    shipmentService.markShipmentAsDelivered();
+                    break;
+                }
+                case 4: {
+                    return;
+                }
+            }
+        }
     }
 }

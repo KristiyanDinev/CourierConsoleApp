@@ -16,12 +16,6 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-    testImplementation(libs.junit)
-
-    // This dependency is used by the application.
-    implementation(libs.guava)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,4 +28,10 @@ java {
 application {
     // Define the main class for the application.
     mainClass = "course.kristiyan.App"
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "course.kristiyan.App"
+    }
 }
