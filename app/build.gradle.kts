@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     // Use JUnit test framework.
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testImplementation(libs.junit)
 
     // This dependency is used by the application.
